@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title></title>
+        <style>
+            .button {
+            background-color: #04AA6D;
+            border: none;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            border-radius: 8px;
+            }
+            .text{
+                position: relative;
+                top: 12px;;
+                font-size: 24px;
+            }
+            .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+            margin-top: 4px;;
+            }
+
+            .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+            }
+
+            .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+            }
+
+            .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+            }
+
+            input:checked + .slider {
+            background-color: #2196F3;
+            }
+
+            input:focus + .slider {
+            box-shadow: 0 0 1px #2196F3;
+            }
+
+            input:checked + .slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+            }
+
+            .slider.round {
+            border-radius: 34px;
+            }
+
+            .slider.round:before {
+            border-radius: 50%;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="mainContainer" style="text-align: center; background-color: whitesmoke; padding: 20px;">
+            <h1>Random God Selector</h1>
+            <canvas id="main" height="200" width="800" ></canvas>
+            <br>
+            <button class="button" onclick="generate()">Generate</button>
+            <div id="settings" style="display: flex;  text-align: left; background-color: blueviolet; margin-top: 20px;">
+                <div style="width: 40%; background-color: #ccc; padding:5%" >
+                    <label class="switch">
+                        <input id="Hunter" type="checkbox" checked="checked" onclick="updateClasses(Hunter)">
+                        <span class="slider round"></span>
+                    </label>
+                    <span class="text">Hunter</span><br>
+                    <label class="switch">
+                        <input id="Warrior" type="checkbox" checked="checked" onclick="updateClasses(Warrior)">
+                        <span class="slider round"></span>
+                    </label>
+                    <span class="text">Warrior</span><br>
+                    <label class="switch">
+                        <input id="Assassin" type="checkbox" checked="checked" onclick="updateClasses(Assassin)">
+                        <span class="slider round"></span>
+                    </label>
+                    <span class="text">Assassin</span><br>
+                    <label class="switch">
+                        <input id="Mage" type="checkbox" checked="checked" onclick="updateClasses(Mage)">
+                        <span class="slider round"></span>
+                    </label>
+                    <span class="text">Mage</span><br>
+                    <label class="switch">
+                        <input id="Guardian" type="checkbox" checked="checked" onclick="updateClasses(Guardian)">
+                        <span class="slider round"></span>
+                    </label>
+                    <span class="text">Guardian</span><br>
+                </div>
+                <div style="width: 40%; padding: 5%;">
+                    <input id="bi" list="brow" accept="" onclick="updateBlackList()">
+                    <datalist id="brow">
+                        <option onclick="updateBlackList()" value="Internet Explorer">
+                        <option onclick="updateBlackList()" value="Firefox">
+                        <option onclick="updateBlackList()" value="Chrome">
+                        <option onclick="updateBlackList()" value="Opera">
+                        <option onclick="updateBlackList()" value="Safari">
+                    </datalist>  
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+<script type="text/javascript" src="gods.json"></script>
+<script type="text/javascript" src="smite.js"></script>
+
